@@ -1,0 +1,11 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "SQLite",
+      "database": "${workspaceFolder:car-rental}/data/database.db"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}
