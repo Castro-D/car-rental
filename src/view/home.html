@@ -1,0 +1,7 @@
+{% extends 'view/layout/base.html' %}
+
+{% block body %}
+  {% for car in cars %}
+    <h3>{{car.make}}</h3>
+  {% endfor %}
+{% endblock %}
