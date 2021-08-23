@@ -1,5 +1,6 @@
 const express = require('express');
 const Database = require('better-sqlite3');
+const nunjucks = require('nunjucks');
 const { fromDbToEntity } = require('./mapper/carMapper');
 
 const app = express();
@@ -7,7 +8,12 @@ const port = 8080;
 
 const db = new Database('./data/database.db', { verbose: console.log });
 
-function getAllCars() {
+nunjucks.configure('src', {
+  autoescape: true,
+  express: app,
+});
+
+async function getAllCars() {
   const cars = db.prepare(
     `SELECT
       id,
@@ -28,8 +34,8 @@ function getAllCars() {
 }
 
 async function index(req, res) {
-  const data = await getAllCars();
-  res.send(data);
+  const cars = await getAllCars();
+  res.render('view/home.html', { cars });
 }
 
 app.get('/', index);
