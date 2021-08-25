@@ -38,7 +38,32 @@ async function index(req, res) {
   res.render('view/home.html', { cars });
 }
 
+async function getCarbyId(id) {
+  const car = db.prepare(
+    `SELECT
+    id,
+    make,
+    model,
+    year,
+    kms,
+    color,
+    air_conditioning,
+    number_passengers,
+    transmission, 
+    car_img_url
+    FROM cars WHERE id = ?`,
+  ).get(id);
+  return fromDbToEntity(car);
+}
+
+async function view(req, res) {
+  const { id } = req.params;
+  const car = await getCarbyId(id);
+  res.render('view/single-car.html', { car });
+}
+
 app.get('/', index);
+app.get('/car/view/:id', view);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
