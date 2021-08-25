@@ -1,7 +1,32 @@
 {% extends 'view/layout/base.html' %}
 
 {% block body %}
+<div class="columns is-centered">
   {% for car in cars %}
-    <h3>{{car.make}}</h3>
+  <div class="column is-3">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-16by9">
+          <img src="{{car.carImgUrl}}" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{car.make.toUpperCase()}} {{car.model}}</p>
+          </div>
+        </div>
+    
+        <div class="content">
+          <a href="">See more...</a>
+        </div>
+      </div>
+      <footer class="card-footer">
+        <a href="#" class="card-footer-item">Edit</a>
+        <a href="#" class="card-footer-item">Delete</a>
+      </footer>
+    </div>
+  </div>
   {% endfor %}
+</div>
 {% endblock %}
