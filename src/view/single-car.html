@@ -1,9 +1,8 @@
 {% extends 'view/layout/base.html' %}
 
 {% block body %}
-<div class="columns is-centered">
-  {% for car in cars %}
-  <div class="column is-3">
+<div class='columns is-centered'>
+  <div class="column is-4">
     <div class="card">
       <div class="card-image">
         <figure class="image is-16by9">
@@ -14,19 +13,16 @@
         <div class="media">
           <div class="media-content">
             <p class="title is-4">{{car.make.toUpperCase()}} {{car.model}}</p>
+            <p class="title is-4">{{car.year}}</p>
+            <p class="title is-4">{{car.kms}}</p>
+            <p class="title is-4">{{car.color}}</p>
+            <p class="title is-4">{{car.airConditioning}}</p>
+            <p class="title is-4">{{car.numberPassengers}}</p>
+            <p class="title is-4">{{car.transmission}}</p>
           </div>
         </div>
-    
-        <div class="content">
-          <a href="/car/view/{{car.id}}">See more...</a>
-        </div>
-      </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Edit</a>
-        <a href="#" class="card-footer-item">Delete</a>
-      </footer>
+      </div> 
     </div>
   </div>
-  {% endfor %}
 </div>
 {% endblock %}
