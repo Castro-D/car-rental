@@ -1,0 +1,113 @@
+{% extends 'view/layout/base.html' %}
+{% block body %}
+<form action="/car/save" method="POST" enctype="multipart/form-data">
+  <div class="columns is-centered">
+    <div class="column is-4">
+      <input type="hidden" name="id" value="{{car.id}}" readonly />
+      <div class="field">
+        <label class="label">Make</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Audi" name='make' required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Model</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-success" type="text" placeholder="Mustang GT" name='model' required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Year</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-danger" type="text" placeholder="2010" name='year' required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Kilometers</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-danger" type="text" placeholder="10000" name='kilometers' required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Color</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Red" name='color' required>
+        </div>
+      </div>
+
+      <div class="control">
+        <label class="radio">Air conditioning: 
+          <input type="radio" name="air-conditioning" value='yes' required>
+          Yes
+        </label>
+        <label class="radio">
+          <input type="radio" name="air-conditioning" value='no'>
+          No
+        </label>
+      </div>
+
+      <div class="field">
+        <label class="label">Passengers</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-danger" type="text" placeholder="5" name='passengers' required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Transmission</label>
+        <div class="control">
+          <div class="select">
+            <select name='transmission'>
+              <option>Manual</option>
+              <option>Auto</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="file">
+        <label class="file-label">
+          <input class="file-input" type="file" name="image" required>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Attach image
+            </span>
+          </span>
+        </label>
+      </div>
+      <input type="submit" class='button is-primary' value='Submit'>
+    </div>
+  </div>
+</form>
+{% endblock %}

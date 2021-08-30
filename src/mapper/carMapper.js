@@ -29,6 +29,31 @@ function fromDbToEntity({
   });
 }
 
+function fromDataToEntity({
+  id,
+  make,
+  model,
+  year,
+  kilometers: kms,
+  color,
+  'air-conditioning': airConditioning,
+  passengers: numberPassengers,
+  transmission,
+}) {
+  return new Car({
+    id,
+    make,
+    model,
+    year,
+    kms,
+    color,
+    airConditioning,
+    numberPassengers,
+    transmission,
+  });
+}
+
 module.exports = {
   fromDbToEntity,
+  fromDataToEntity,
 };
