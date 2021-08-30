@@ -6,19 +6,19 @@
     <div class="card">
       <div class="card-image">
         <figure class="image is-16by9">
-          <img src="{{car.carImgUrl}}" alt="Placeholder image">
+          <img src="/{{car.carImgUrl}}" alt="Placeholder image">
         </figure>
       </div>
       <div class="card-content">
         <div class="media">
           <div class="media-content">
             <p class="title is-4">{{car.make.toUpperCase()}} {{car.model}}</p>
-            <p class="title is-4">{{car.year}}</p>
-            <p class="title is-4">{{car.kms}}</p>
-            <p class="title is-4">{{car.color}}</p>
-            <p class="title is-4">{{car.airConditioning}}</p>
-            <p class="title is-4">{{car.numberPassengers}}</p>
-            <p class="title is-4">{{car.transmission}}</p>
+            <p class="title is-4">Year: {{car.year}}</p>
+            <p class="title is-4">Kilometers: {{car.kms}}</p>
+            <p class="title is-4">color: {{car.color}}</p>
+            <p class="title is-4">air conditioning: {{car.airConditioning}}</p>
+            <p class="title is-4">Number of passengers: {{car.numberPassengers}}</p>
+            <p class="title is-4">Transmission: {{car.transmission}}</p>
           </div>
         </div>
       </div> 

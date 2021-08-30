@@ -1,13 +1,14 @@
 {% extends 'view/layout/base.html' %}
 
 {% block body %}
+<a href="/car/create" class="button is-primary">Add car</a>
 <div class="columns is-centered">
   {% for car in cars %}
   <div class="column is-3">
     <div class="card">
       <div class="card-image">
         <figure class="image is-16by9">
-          <img src="{{car.carImgUrl}}" alt="Placeholder image">
+          <img src="/{{car.carImgUrl}}" alt="Placeholder image">
         </figure>
       </div>
       <div class="card-content">
