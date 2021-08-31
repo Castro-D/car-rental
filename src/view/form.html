@@ -7,14 +7,14 @@
       <div class="field">
         <label class="label">Make</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Audi" name='make' required>
+          <input class="input" type="text" placeholder="Audi" name='make' value='{{car.make}}' required>
         </div>
       </div>
 
       <div class="field">
         <label class="label">Model</label>
         <div class="control has-icons-left has-icons-right">
-          <input class="input is-success" type="text" placeholder="Mustang GT" name='model' required>
+          <input class="input is-success" type="text" placeholder="Mustang GT" name='model' value='{{car.model}}' required>
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
           </span>
@@ -27,7 +27,7 @@
       <div class="field">
         <label class="label">Year</label>
         <div class="control has-icons-left has-icons-right">
-          <input class="input is-danger" type="text" placeholder="2010" name='year' required>
+          <input class="input is-danger" type="text" placeholder="2010" name='year' value='{{car.year}}' required>
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -40,7 +40,7 @@
       <div class="field">
         <label class="label">Kilometers</label>
         <div class="control has-icons-left has-icons-right">
-          <input class="input is-danger" type="text" placeholder="10000" name='kilometers' required>
+          <input class="input is-danger" type="text" placeholder="10000" name='kilometers' value='{{car.kms}}' required>
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -53,7 +53,7 @@
       <div class="field">
         <label class="label">Color</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Red" name='color' required>
+          <input class="input" type="text" placeholder="Red" name='color' value='{{car.color}}' required>
         </div>
       </div>
 
@@ -71,7 +71,7 @@
       <div class="field">
         <label class="label">Passengers</label>
         <div class="control has-icons-left has-icons-right">
-          <input class="input is-danger" type="text" placeholder="5" name='passengers' required>
+          <input class="input is-danger" type="text" placeholder="5" name='passengers' value='{{car.numberPassengers}}' required>
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -95,7 +95,7 @@
 
       <div class="file">
         <label class="file-label">
-          <input class="file-input" type="file" name="image" required>
+          <input class="file-input" type="file" name="image">
           <span class="file-cta">
             <span class="file-icon">
               <i class="fas fa-upload"></i>

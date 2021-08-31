@@ -155,6 +155,12 @@ app.post('/car/save', upload.single('image'), (req, res) => {
   res.redirect('/');
 });
 
+app.get('/car/edit/:id', async (req, res) => {
+  const { id } = req.params;
+  const car = await getCarbyId(id);
+  res.render('view/form.html', { car });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
