@@ -141,6 +141,13 @@ function save(car) {
   return getCarbyId(id);
 }
 
+function deleteCar(car) {
+  db.prepare(
+    `DELETE FROM cars WHERE id = ?
+    `,
+  ).run(car.id);
+}
+
 app.get('/', index);
 app.get('/car/view/:id', view);
 app.get('/car/create', (req, res) => {
@@ -159,6 +166,13 @@ app.get('/car/edit/:id', async (req, res) => {
   const { id } = req.params;
   const car = await getCarbyId(id);
   res.render('view/form.html', { car });
+});
+
+app.get('/car/delete/:id', async (req, res) => {
+  const { id } = req.params;
+  const car = await getCarbyId(id);
+  deleteCar(car);
+  res.redirect('/');
 });
 
 app.listen(port, () => {
