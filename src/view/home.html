@@ -1,8 +1,7 @@
 {% extends 'view/layout/base.html' %}
 
 {% block body %}
-<a href="/car/create" class="button is-primary">Add car</a>
-<div class="columns is-centered">
+<div class="columns is-centered is-multiline mt-2 mx-5">
   {% for car in cars %}
   <div class="column is-3">
     <div class="card">
@@ -14,17 +13,17 @@
       <div class="card-content">
         <div class="media">
           <div class="media-content">
-            <p class="title is-4">{{car.make.toUpperCase()}} {{car.model}}</p>
+            <p class="title is-5">{{car.make.toUpperCase()}} {{car.model}}</p>
           </div>
         </div>
     
         <div class="content">
-          <a href="/car/view/{{car.id}}">See more...</a>
+          <a href="/car/view/{{car.id}}" class='is-primary has-text-link'>See more...</a>
         </div>
       </div>
       <footer class="card-footer">
-        <a href="/car/edit/{{car.id}}" class="card-footer-item">Edit</a>
-        <a href="/car/delete/{{car.id}}" class="card-footer-item">Delete</a>
+        <a href="/car/edit/{{car.id}}" class="card-footer-item has-text-link">Edit</a>
+        <a href="/car/delete/{{car.id}}" class="card-footer-item has-text-danger">Delete</a>
       </footer>
     </div>
   </div>
