@@ -23,10 +23,13 @@
       </div>
       <footer class="card-footer">
         <a href="/car/edit/{{car.id}}" class="card-footer-item has-text-link">Edit</a>
-        <a href="/car/delete/{{car.id}}" class="card-footer-item has-text-danger">Delete</a>
+        <a href="#" class="card-footer-item has-text-danger" id='deleteButton' data-id="{{car.id}}">Delete</a>
       </footer>
     </div>
   </div>
   {% endfor %}
 </div>
+{% endblock %}
+{% block footerScripts %}
+<script src="/public/js/home.js"></script>
 {% endblock %}
