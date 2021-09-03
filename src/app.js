@@ -151,7 +151,7 @@ function deleteCar(car) {
 app.get('/', index);
 app.get('/car/view/:id', view);
 app.get('/car/create', (req, res) => {
-  res.render('view/form.html');
+  res.render('view/new-form.html');
 });
 app.post('/car/save', upload.single('image'), (req, res) => {
   const car = fromDataToEntity(req.body);
