@@ -75,7 +75,7 @@ async function getCarbyId(id) {
 async function view(req, res) {
   const { id } = req.params;
   const car = await getCarbyId(id);
-  res.render('view/single-car.html', { car });
+  res.render('view/car-info.html', { car });
 }
 
 function save(car) {

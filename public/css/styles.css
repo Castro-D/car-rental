@@ -3,3 +3,16 @@
   background-size: cover;
   width: 140px
 }
+
+.img {
+  width: 75%;
+  object-fit: cover;
+}
+
+ul li::before {
+  content: "\2022";
+  color: rgb(3, 204, 187);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+}
