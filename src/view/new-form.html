@@ -1,0 +1,88 @@
+{% extends 'view/layout/base.html' %}
+{% block body %}
+<div class='columns is-centered'>
+  <div class='column is-4'>
+    <form class="box">
+      <div class="field">
+        <label class="label">Make</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g Ford" name='make' value='{{car.make}}' required />
+        </div>
+      </div>
+    
+      <div class="field">
+        <label class="label">Model</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g Mustang" name='model' value='{{car.model}}' required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Year</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g 2010" name='year' value='{{car.year}}' required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Kilometers</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g 10000" name='kilometers' value='{{car.kms}}' required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Color</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g Red" name='color' value='{{car.color}}' required />
+        </div>
+      </div>
+
+      <div class="control">
+        <label class="radio">Air conditioning: 
+          <input type="radio" name="air-conditioning" value='yes' required />
+          Yes
+        </label>
+        <label class="radio">
+          <input type="radio" name="air-conditioning" value='no' />
+          No
+        </label>
+      </div>
+
+      <div class="field">
+        <label class="label">Passengers</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="5" name='passengers' value='{{car.numberPassengers}}' required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Transmission</label>
+        <div class="control">
+          <div class="select">
+            <select name='transmission'>
+              <option>Manual</option>
+              <option>Auto</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="file">
+        <label class="file-label">
+          <input class="file-input" type="file" name="image" />
+          <span class="file-cta">
+            <span class="material-icons">file_upload</span>
+            <span class="file-label">
+              Attach image
+            </span>
+          </span>
+        </label>
+      </div>
+    
+      <input type="submit" class='button is-primary' value='Submit' />
+    </form>
+  </div>
+</div>
+<span class="material-icons">file_upload</span>
+{% endblock %}
