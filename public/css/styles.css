@@ -16,3 +16,7 @@ ul li::before {
   display: inline-block;
   width: 1em;
 }
+
+li{
+  margin: 10px 0;
+}
