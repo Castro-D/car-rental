@@ -2,7 +2,8 @@
 {% block body %}
 <div class='columns is-centered'>
   <div class='column is-4'>
-    <form class="box">
+    <form class="box" action="/car/save" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="id" value="{{car.id}}" readonly />
       <div class="field">
         <label class="label">Make</label>
         <div class="control">
@@ -84,5 +85,4 @@
     </form>
   </div>
 </div>
-<span class="material-icons">file_upload</span>
 {% endblock %}
