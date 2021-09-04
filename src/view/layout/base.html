@@ -14,8 +14,8 @@
     <div class="navbar-brand">
       <a class="navbar-item logo" href="/">
       </a>
-  
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+
+      <a role="button" class="navbar-burger" id='burger' aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -48,5 +48,13 @@
   </nav>
   {% block body %} {% endblock %}
   {% block footerScripts %}{% endblock %}
+  <script>
+    const $burger = document.querySelector('#burger');
+    const $menu = document.querySelector('.navbar-menu');
+    $burger.addEventListener('click', () => {
+      $burger.classList.toggle('is-active');
+      $menu.classList.toggle('is-active');
+    });
+  </script>
 </body>
 </html>
