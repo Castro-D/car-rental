@@ -165,7 +165,7 @@ app.post('/car/save', upload.single('image'), (req, res) => {
 app.get('/car/edit/:id', async (req, res) => {
   const { id } = req.params;
   const car = await getCarbyId(id);
-  res.render('view/form.html', { car });
+  res.render('view/new-form.html', { car });
 });
 
 app.get('/car/delete/:id', async (req, res) => {

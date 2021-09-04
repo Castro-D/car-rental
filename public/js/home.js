@@ -7,8 +7,6 @@ $deleteButtons.forEach(($deleteButton) => {
       fetch(`/car/delete/${$deleteButton.dataset.id}`);
       alert('Deleted');
       window.location.reload();
-    } else {
-      alert('cancelled');
     }
   });
 });
