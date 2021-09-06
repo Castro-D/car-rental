@@ -1,14 +1,14 @@
 {% extends 'view/layout/base.html' %}
 
 {% block body %}
-<div class="container is-max-desktop mt-5">
-  <div class="notification has-background-primary-light has-text-primary-dark is-size-4 has-text-weight-bold">
+<div class="container is-max-desktop mt-5 main-content">
+  <div class="notification has-background-primary-light has-text-primary-dark is-size-4 has-text-weight-bold is-size-6-mobile py-3">
     {{car.make.toUpperCase()}} {{car.model.toUpperCase()}}
   </div>
-  <div class='is-flex is-justify-content-space-around'>
+  <div class='is-flex is-justify-content-space-around content-container'>
     <img src="/{{car.carImgUrl}}" class='img'>
     <div class='is-flex is-align-items-center'>
-      <ul class='is-size-6'>
+      <ul class='is-size-6 is-size-7-mobile'>
         <li>Year: <b>{{car.year}}</b></li>
         <li>Kms: <b>{{car.kms}}</b></li>
         <li>Color: <b>{{car.color}}</b></li>
