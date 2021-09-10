@@ -78,69 +78,6 @@ async function view(req, res) {
   res.render('car/view/car-info.html', { car });
 }
 
-function save(car) {
-  let id;
-  const isUpdate = car.id;
-  if (isUpdate) {
-    const stmt = db.prepare(
-      `UPDATE cars SET
-      ${car.carImgUrl ? 'car_img_url = ?,' : ''}
-      make = ?,
-      model = ?,
-      year = ?,
-      kms = ?,
-      color = ?,
-      air_conditioning = ?,
-      number_passengers = ?,
-      transmission = ?
-      WHERE id = ?`,
-    );
-    const params = [
-      car.make,
-      car.model,
-      car.year,
-      car.kms,
-      car.color,
-      car.airConditioning,
-      car.numberPassengers,
-      car.transmission,
-      car.id,
-    ];
-    if (car.carImgUrl) {
-      params.unshift(car.carImgUrl);
-    }
-    stmt.run(params);
-  } else {
-    const stmt = db.prepare(
-      `INSERT INTO cars (
-        make,
-        model,
-        year,
-        kms,
-        color,
-        air_conditioning,
-        number_passengers,
-        transmission,
-        car_img_url
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `,
-    );
-    const result = stmt.run(
-      car.make,
-      car.model,
-      car.year,
-      car.kms,
-      car.color,
-      car.airConditioning,
-      car.numberPassengers,
-      car.transmission,
-      car.carImgUrl,
-    );
-    id = result.lastInsertRowid;
-  }
-  return getCarbyId(id);
-}
-
 function deleteCar(car) {
   db.prepare(
     `DELETE FROM cars WHERE id = ?
