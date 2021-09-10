@@ -1,4 +1,5 @@
 const AbstractCarRepository = require('../abstractCarRepository');
+const { fromDbToEntity } = require('../../mapper/carMapper');
 
 module.exports = class CarRepository extends AbstractCarRepository {
   /**
@@ -73,6 +74,54 @@ module.exports = class CarRepository extends AbstractCarRepository {
       );
       id = result.lastInsertRowid;
     }
-    return getCarbyId(id);
+    return this.getCarbyId(id);
+  }
+
+  /**
+   * @param {import('../../entity/car')} car
+   */
+  deleteCar(car) {
+    this.databaseAdapter.prepare(
+      `DELETE FROM cars WHERE id = ?
+      `,
+    ).run(car.id);
+  }
+
+  getCarbyId(id) {
+    const car = this.databaseAdapter.prepare(
+      `SELECT
+      id,
+      make,
+      model,
+      year,
+      kms,
+      color,
+      air_conditioning,
+      number_passengers,
+      transmission, 
+      car_img_url
+      FROM cars WHERE id = ?`,
+    ).get(id);
+    return fromDbToEntity(car);
+  }
+
+  getAllCars() {
+    const cars = this.databaseAdapter.prepare(
+      `SELECT
+        id,
+        make,
+        model,
+        year,
+        kms,
+        color,
+        air_conditioning,
+        number_passengers,
+        transmission,
+        car_img_url
+  
+      FROM cars`,
+    )
+      .all();
+    return cars.map((carData) => fromDbToEntity(carData));
   }
 };
