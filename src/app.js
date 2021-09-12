@@ -29,43 +29,7 @@ nunjucks.configure('src/module', {
   express: app,
 });
 
-async function index(req, res) {
-  const cars = await getAllCars();
-  res.render('car/view/home.html', { cars });
-}
-
-async function view(req, res) {
-  const { id } = req.params;
-  const car = await getCarbyId(id);
-  res.render('car/view/car-info.html', { car });
-}
-
 app.get('/', index);
-app.get('/car/view/:id', view);
-app.get('/car/create', (req, res) => {
-  res.render('car/view/new-form.html');
-});
-app.post('/car/save', upload.single('image'), (req, res) => {
-  const car = fromDataToEntity(req.body);
-  if (req.file) {
-    car.carImgUrl = req.file.path;
-  }
-  save(car);
-  res.redirect('/');
-});
-
-app.get('/car/edit/:id', async (req, res) => {
-  const { id } = req.params;
-  const car = await getCarbyId(id);
-  res.render('car/view/new-form.html', { car });
-});
-
-app.get('/car/delete/:id', async (req, res) => {
-  const { id } = req.params;
-  const car = await getCarbyId(id);
-  deleteCar(car);
-  res.redirect('/');
-});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
