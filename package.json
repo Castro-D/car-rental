@@ -26,6 +26,7 @@
     "better-sqlite3": "^7.4.3",
     "express": "^4.17.1",
     "multer": "^1.4.3",
-    "nunjucks": "^3.2.3"
+    "nunjucks": "^3.2.3",
+    "rsdi": "^1.0.12"
   }
 }

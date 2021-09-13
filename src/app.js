@@ -8,19 +8,6 @@ const { fromDbToEntity, fromDataToEntity } = require('./module/car/mapper/carMap
 const app = express();
 const port = 8080;
 
-const db = new Database('./data/database.db', { verbose: console.log });
-
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, 'public/img/cars');
-  },
-  filename(req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
-
-const upload = multer({ storage });
-
 app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
 
