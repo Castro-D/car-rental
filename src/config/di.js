@@ -7,13 +7,13 @@ const Sqlite3Database = require('better-sqlite3');
 const { CarController, CarService, CarRepository } = require('../module/car/module');
 
 function configureDatabaseAdapter() {
-  return new Sqlite3Database('./data/database.db', { verbose: console.log });
+  return new Sqlite3Database(process.env.DB_PATH, { verbose: console.log });
 }
 
 function configureMulter() {
   const storage = multer.diskStorage({
     destination(req, file, cb) {
-      cb(null, 'public/img/cars');
+      cb(null, process.env.IMG_UPLOAD_DIR);
     },
     filename(req, file, cb) {
       cb(null, Date.now() + path.extname(file.originalname));

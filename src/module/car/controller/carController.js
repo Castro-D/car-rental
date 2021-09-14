@@ -52,14 +52,14 @@ module.exports = class CarController extends AbstractController {
 
   async delete(req, res) {
     const { id } = req.params;
-    const car = await this.carService.getCarbyId(id);
+    const car = await this.carService.getCarById(id);
     await this.carService.deleteCar(car);
     res.redirect('/');
   }
 
   async edit(req, res) {
     const { id } = req.params;
-    const car = await this.carService.getCarbyId(id);
+    const car = await this.carService.getCarById(id).catch((e) => console.log(e));
     res.render('car/view/new-form.html', { car });
   }
 };
