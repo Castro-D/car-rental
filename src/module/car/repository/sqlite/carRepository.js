@@ -87,7 +87,7 @@ module.exports = class CarRepository extends AbstractCarRepository {
     ).run(car.id);
   }
 
-  getCarbyId(id) {
+  getCarById(id) {
     const car = this.databaseAdapter.prepare(
       `SELECT
       id,

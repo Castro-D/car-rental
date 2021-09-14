@@ -1,12 +1,12 @@
+require('dotenv').config();
 const express = require('express');
-const Database = require('better-sqlite3');
 const nunjucks = require('nunjucks');
-const multer = require('multer');
-const path = require('path');
-const { fromDbToEntity, fromDataToEntity } = require('./module/car/mapper/carMapper');
+
+const configureDependencyInjection = require('./config/di');
+const { init: initCarModule } = require('./module/car/module');
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
@@ -16,7 +16,14 @@ nunjucks.configure('src/module', {
   express: app,
 });
 
-app.get('/', index);
+const container = configureDependencyInjection(app);
+initCarModule(app, container);
+
+/**
+ * @type {import('./module/car/controller/carController')} carController
+ */
+const carController = container.get('CarController');
+app.get('/', carController.index.bind(carController));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
