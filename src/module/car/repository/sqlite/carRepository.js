@@ -74,7 +74,7 @@ module.exports = class CarRepository extends AbstractCarRepository {
       );
       id = result.lastInsertRowid;
     }
-    return this.getCarbyId(id);
+    return this.getCarById(id);
   }
 
   /**
