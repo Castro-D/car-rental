@@ -31,13 +31,13 @@ module.exports = class CarController extends AbstractController {
   }
 
   async index(req, res) {
-    const cars = await this.carService.getAllCars();
+    const cars = await this.carService.getAllCars().catch((e) => console.log(e));
     res.render('car/view/home.html', { cars });
   }
 
   async view(req, res) {
     const { id } = req.params;
-    const car = await this.carService.getCarById(id);
+    const car = await this.carService.getCarById(id).catch((e) => console.log(e));
     res.render('car/view/car-info.html', { car });
   }
 
@@ -46,14 +46,15 @@ module.exports = class CarController extends AbstractController {
     if (req.file) {
       car.carImgUrl = req.file.path;
     }
-    await this.carService.save(car);
+    await this.carService.save(car).catch((e) => console.log(e));
+
     res.redirect('/');
   }
 
   async delete(req, res) {
     const { id } = req.params;
-    const car = await this.carService.getCarById(id);
-    await this.carService.deleteCar(car);
+    const car = await this.carService.getCarById(id).catch((e) => console.log(e));
+    await this.carService.deleteCar(car).catch((e) => console.log(e));
     res.redirect('/');
   }
 
