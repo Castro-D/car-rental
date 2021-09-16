@@ -16,7 +16,7 @@ nunjucks.configure('src/module', {
   express: app,
 });
 
-const container = configureDependencyInjection(app);
+const container = configureDependencyInjection();
 initCarModule(app, container);
 
 /**
