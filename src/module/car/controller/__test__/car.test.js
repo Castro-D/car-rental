@@ -20,3 +20,10 @@ test('index renders index.html', async () => {
   expect(renderMock).toHaveBeenCalledTimes(1);
   expect(renderMock).toHaveBeenCalledWith('car/view/home.html', { cars: [] })
 });
+
+test('create renders form.html', async () => {
+  const renderMock = jest.fn();
+  await controller.create({}, { render: renderMock });
+  expect(renderMock).toHaveBeenCalledTimes(1);
+  expect(renderMock).toHaveBeenCalledWith('car/view/new-form.html');
+});
