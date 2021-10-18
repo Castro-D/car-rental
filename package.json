@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev:express": "nodemon ./src/app.js"
+    "dev:express": "nodemon ./src/app.js",
+    "test": "jest --coverage",
+    "test:dev": "jest --watch"
   },
   "repository": {
     "type": "git",
