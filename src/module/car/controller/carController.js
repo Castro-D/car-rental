@@ -42,13 +42,16 @@ module.exports = class CarController extends AbstractController {
   }
 
   async save(req, res) {
-    const car = await fromDataToEntity(req.body);
-    if (req.file) {
-      car.carImgUrl = req.file.path;
+    try{
+      const car = fromDataToEntity(req.body);
+      if (req.file) {
+        car.carImgUrl = req.file.path;
+      }
+      await this.carService.save(car)
+      res.redirect('/');
+    } catch (e) {
+      console.log(e);
     }
-    await this.carService.save(car).catch((e) => console.log(e));
-
-    res.redirect('/');
   }
 
   async delete(req, res) {
