@@ -1,4 +1,4 @@
-const car = require('../../entity/car');
+const Car = require('../../entity/car');
 const CarController = require('../carController');
 
 const upploadMiddleware = {
@@ -26,4 +26,49 @@ test('create renders form.html', async () => {
   await controller.create({}, { render: renderMock });
   expect(renderMock).toHaveBeenCalledTimes(1);
   expect(renderMock).toHaveBeenCalledWith('car/view/new-form.html');
+});
+
+test('save method edits a car when an id is given', async () => {
+  const redirectMock = jest.fn();
+  const FAKE_IMG_URL = 'example/car.jpg';
+  const bodyMock = new Car({
+    id: 1,
+    make: undefined,
+    model: undefined,
+    year: undefined,
+    kms: undefined,
+    color: undefined,
+    airConditioning: undefined,
+    numberPassengers: undefined,
+    transmission: undefined,
+    carImgUrl: FAKE_IMG_URL,
+  });
+
+  await controller.save({ body: bodyMock, file: { path: FAKE_IMG_URL } }, { redirect: redirectMock });
+  expect(serviceMock.save).toHaveBeenCalledTimes(1);
+  expect(serviceMock.save).toHaveBeenCalledWith(bodyMock);
+  expect(redirectMock).toHaveBeenCalledTimes(1);
+  expect(redirectMock).toHaveBeenCalledWith('/');
+});
+
+test('save creates a car when id is not given', async () => {
+  serviceMock.save.mockReset();
+  const redirectMock = jest.fn();
+  const FAKE_IMG_URL = 'example/car.jpg';
+  const bodyMock = new Car({
+    make: undefined,
+    model: undefined,
+    year: undefined,
+    kms: undefined,
+    color: undefined,
+    airConditioning: undefined,
+    numberPassengers: undefined,
+    transmission: undefined,
+    carImgUrl: 'example/car.jpg',
+  });
+  await controller.save({ body: bodyMock, file: { path: FAKE_IMG_URL } }, { redirect: redirectMock })
+  expect(serviceMock.save).toHaveBeenCalledTimes(1);
+  expect(serviceMock.save).toHaveBeenCalledWith(bodyMock);
+  expect(redirectMock).toHaveBeenCalledTimes(1);
+  expect(redirectMock).toHaveBeenCalledWith('/');
 });
