@@ -31,14 +31,22 @@ module.exports = class CarController extends AbstractController {
   }
 
   async index(req, res) {
-    const cars = await this.carService.getAllCars().catch((e) => console.log(e));
-    res.render('car/view/home.html', { cars });
+    try {
+      const cars = await this.carService.getAllCars();
+      res.render('car/view/home.html', { cars });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async view(req, res) {
-    const { id } = req.params;
-    const car = await this.carService.getCarById(id).catch((e) => console.log(e));
-    res.render('car/view/car-info.html', { car });
+    try {
+      const { id } = req.params;
+      const car = await this.carService.getCarById(id);
+      res.render('car/view/car-info.html', { car });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async save(req, res) {
@@ -55,10 +63,14 @@ module.exports = class CarController extends AbstractController {
   }
 
   async delete(req, res) {
-    const { id } = req.params;
-    const car = await this.carService.getCarById(id).catch((e) => console.log(e));
-    await this.carService.deleteCar(car).catch((e) => console.log(e));
-    res.redirect('/');
+    try {
+      const { id } = req.params;
+      const car = await this.carService.getCarById(id);
+      await this.carService.deleteCar(car);
+      res.redirect('/');
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async edit(req, res) {
