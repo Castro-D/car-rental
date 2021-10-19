@@ -129,7 +129,7 @@ test('save displays error on exception', async () => {
   });
   const redirectMock = jest.fn();
   serviceMock.save.mockImplementationOnce(() => { throw Error('testing') });
-  await controller.save({ body: bodyMock, file: { path: 'example/car.jpg' } }, { redirect: redirectMock });
+  await controller.save({ body: bodyMock }, { redirect: redirectMock });
 
   expect(global.console.log).toHaveBeenCalledTimes(1);
 });
@@ -146,5 +146,24 @@ test('index displays error on exception', async () => {
   global.console.log.mockReset();
   serviceMock.getAllCars.mockImplementationOnce(() => { throw Error('tesing') });
   await controller.index({}, {});
+  expect(global.console.log).toHaveBeenCalledTimes(1);
+});
+
+test('edit render form with data', async () => {
+  const MOCK_ID = 1;
+  const renderMock = jest.fn();
+  await controller.edit({ params: { id: 1 }}, { render: renderMock });
+
+  expect(renderMock).toHaveBeenCalledTimes(1);
+  expect(renderMock).toHaveBeenCalledWith('car/view/new-form.html', { car: {} });
+  expect(serviceMock.getCarById).toHaveBeenCalledWith(MOCK_ID);
+});
+
+test('edit displays error on exception', async () => {
+  global.console.log.mockReset();
+  const renderMock = jest.fn();
+  serviceMock.getCarById.mockImplementationOnce(() => { throw Error('testing') });
+  await controller.edit({ params: { id: 1 }}, { render: renderMock });
+
   expect(global.console.log).toHaveBeenCalledTimes(1);
 });
