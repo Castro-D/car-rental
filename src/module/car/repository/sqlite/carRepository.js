@@ -17,6 +17,7 @@ module.exports = class CarRepository extends AbstractCarRepository {
   save(car) {
     let id;
     const isUpdate = car.id;
+    id = car.id;
     if (isUpdate) {
       const stmt = this.databaseAdapter.prepare(
         `UPDATE cars SET
@@ -85,6 +86,7 @@ module.exports = class CarRepository extends AbstractCarRepository {
       `DELETE FROM cars WHERE id = ?
       `,
     ).run(car.id);
+    return true;
   }
 
   getCarById(id) {
